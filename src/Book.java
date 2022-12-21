@@ -3,6 +3,7 @@ public class Book {
     private Author author;
     private int year;
 
+
     public Book(String name, Author author,int year){
         this.name = name;
         this.author = author;
@@ -29,9 +30,10 @@ public class Book {
         return "Название: "+this.name+" Автор: "+this.author+" Год издания: "+this.year;
     }
 
-    public boolean equals(Book book) {
+    public boolean equals(Object book) {
         boolean isEqual = false;
-        if((this.name.equals(book.getName())) && (this.author==book.getAuthor()) && (this.year== book.getYear()))
+        Book equalBook = (Book) book;
+        if((this.name.equals(equalBook.getName())) && (this.author.equals(equalBook.getAuthor())) && (this.year== equalBook.getYear()))
             isEqual = true;
 
         return isEqual;

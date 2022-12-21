@@ -20,9 +20,10 @@ public class Author {
         return "Имя: "+this.name+" Фамилия: "+this.surname;
     }
 
-    public boolean equals(Author author) {
+    public boolean equals(Object author) {
         boolean isEqual = false;
-        if((this.name.equals(author.getName())) && (this.surname.equals(author.getSurname())))
+        Author equalAuthor = (Author) author;
+        if((this.name.equals(equalAuthor.getName())) && (this.surname.equals(equalAuthor.getSurname())))
             isEqual = true;
 
         return isEqual;
@@ -30,8 +31,10 @@ public class Author {
 
     @Override
     public int hashCode() {
-        int result = this.name == null ? 0 : name.hashCode();
-        result = 31*result;
+        int result;
+        int hashName = this.name == null ? 0 : name.hashCode();
+        int hashSurname = this.surname == null ? 0 : surname.hashCode();
+        result = 31*hashName*hashSurname;
         return result;
     }
 }
