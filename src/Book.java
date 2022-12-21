@@ -41,8 +41,10 @@ public class Book {
 
     @Override
     public int hashCode() {
-        int result = this.name == null ? 0 : name.hashCode();
-        result = 31*result+this.year;
+        int result;
+        int hashName = this.name == null ? 0 : name.hashCode();
+        int hashAuthor = this.author == null ? 0 : author.hashCode();
+        result = 31*hashName*hashAuthor+this.year;
         return result;
     }
 
